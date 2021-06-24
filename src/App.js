@@ -13,24 +13,42 @@ import BookingList from '../src/components/Customer/BookingList/BookingList'
 import Review from './components/Customer/Review/Review';
 import Admin from './components/Admin/Admin/Admin';
 import Login from './components/Login/Login/Login';
+import AddService from './components/Admin/AddService/AddService';
+import MakeAdmin from './components/Admin/MakeAdmin/MakeAdmin';
+import OrderList from './components/Admin/OrderList/OrderList';
+import { createContext, useState } from 'react';
+import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
+
   <StripeProvider apiKey="pk_test_12345">
       
     </StripeProvider>
   return (
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
     <Router>
-    <div>
       <Switch>
       <Route path="/admin">
           <Admin></Admin>
         </Route>
+        <Route path="/addservice">
+          <AddService></AddService>
+        </Route>
+        <Route path="/makeadmin">
+          <MakeAdmin></MakeAdmin>
+        </Route>
+        <Route path="/orderlist">
+          <OrderList></OrderList>
+        </Route>
         <Route path="/login">
             <Login></Login>
           </Route>
-        <Route path="/dashboard">
+        <PrivateRoute path="/dashboard">
           <Dashboard></Dashboard>
-        </Route>
+        </PrivateRoute>
         <Route path="/book">
           <Book></Book>
         </Route>
@@ -44,8 +62,8 @@ function App() {
           <Home></Home>
         </Route>
       </Switch>
-    </div>
   </Router>
+  </UserContext.Provider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServicesDetail from '../ServicesDetail/ServicesDetail';
 import portfolio from '../../../images/portfolio.jpg'
 import business from '../../../images/business.png'
@@ -6,20 +6,16 @@ import ecommerce from '../../../images/e-commerce.png'
 
 
 const Services = () => {
-    const serviceData = [
-        {
-            name: 'Portfolio Website',
-            img: portfolio
-        },
-        {
-            name: 'Business Website',
-            img: business
-        },
-        {
-            name: 'E-commerce Website',
-            img: ecommerce
-        }
-    ]
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/events')
+        .then(res=>res.json())
+        .then(data =>{
+            setEvents(data);
+        })
+    }, [])
+  
     return (
         <section className="services-container mt-5">
             <div className="text-center">
@@ -28,8 +24,8 @@ const Services = () => {
             </div>
             <div className="d-flex justify-content-center">
             <div className="w-75 row mt-5 pt-5">
-                {
-                    serviceData.map(service => <ServicesDetail service={service} key={service.name}></ServicesDetail>)
+            {
+                    events.map(event=><ServicesDetail event={event}></ServicesDetail>)
                 }
             </div>
         </div>

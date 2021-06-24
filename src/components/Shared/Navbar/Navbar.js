@@ -9,16 +9,14 @@ const Navbar = () => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <h2 style={{color:'#3A4256'}} class="ms-5">Dev Trix</h2>
+                   <Link to='/' className='text-decoration-none'> <h2 style={{color:'#3A4256'}} class="ms-5" >Dev Trix <span><h5 style={{color:'#3A4256'}} class="ms-5">|| Web Development Service</h5></span></h2></Link>
+                    
                     <ul class="navbar-nav ms-auto mx-5 px-5">
                         <li class="nav-item">
                             <Link class="nav-link active ms-3" aria-current="page" href="#">Home</Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link ms-3" to='/dashboard'>Dashboard</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link ms-3" to='/admin'>Admin</Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link ms-3" href="#">Our Portfolio</Link>

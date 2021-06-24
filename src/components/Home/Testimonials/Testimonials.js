@@ -1,31 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Testimonial from '../Testimonial/Testimonial';
-import wilson from '../../../images/wilson.png';
-import ema from '../../../images/ema.png';
-import aliza from '../../../images/aliza.png';
-
-const testimonialData = [
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Wilson Harry',
-        from: 'California',
-        img: wilson
-    },
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Ema Gomez',
-        from: 'California',
-        img: ema
-    },
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Aliza Farari',
-        from: 'California',
-        img: aliza
-    }
-]
 
 const Testimonials = () => {
+    const [testimonialData, setTestimonialData] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+        .then(res=>res.json())
+        .then(data =>{
+            setTestimonialData(data);
+        })
+    }, [])
+
     return (
         <section className="testimonials my-5 py-5">
             <div className="container">
@@ -33,7 +19,7 @@ const Testimonials = () => {
                     <h5 className="text-center text-brand text-uppercase">Testimonial</h5>
                     <h1 className="text-center">What Our Clients <br /> Says </h1>
                 </div>
-                <div className="card-deck mt-5">
+                <div className="card-deck mt-5 mb-5">
                     {
                         testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial.name} />)
                     }
