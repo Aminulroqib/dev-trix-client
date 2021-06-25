@@ -18,6 +18,7 @@ import MakeAdmin from './components/Admin/MakeAdmin/MakeAdmin';
 import OrderList from './components/Admin/OrderList/OrderList';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+import NoMatch from './components/NoMatch/NoMatch';
 
 export const UserContext = createContext();
 
@@ -31,35 +32,35 @@ function App() {
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
     <Router>
       <Switch>
-      <Route path="/admin">
-          <Admin></Admin>
-        </Route>
-        <Route path="/addservice">
+        <PrivateRoute path="/addservice">
           <AddService></AddService>
-        </Route>
-        <Route path="/makeadmin">
+        </PrivateRoute>
+        <PrivateRoute path="/makeadmin">
           <MakeAdmin></MakeAdmin>
-        </Route>
-        <Route path="/orderlist">
+        </PrivateRoute>
+        <PrivateRoute path="/orderlist">
           <OrderList></OrderList>
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
             <Login></Login>
           </Route>
         <PrivateRoute path="/dashboard">
           <Dashboard></Dashboard>
         </PrivateRoute>
-        <Route path="/book">
+        <PrivateRoute path="/book">
           <Book></Book>
-        </Route>
-        <Route path="/bookinglist">
+        </PrivateRoute>
+        <PrivateRoute path="/bookinglist">
           <BookingList></BookingList>
-        </Route>
-        <Route path="/review">
+        </PrivateRoute>
+        <PrivateRoute path="/review">
           <Review></Review>
-        </Route>
-        <Route path="/">
+        </PrivateRoute>
+        <Route exact path="/">
           <Home></Home>
+        </Route>
+        <Route path="*">
+            <NoMatch/>
         </Route>
       </Switch>
   </Router>

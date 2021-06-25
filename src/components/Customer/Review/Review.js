@@ -26,7 +26,7 @@ const Review = () => {
         formData.append('company', info.company);
         formData.append('description', info.description);
 
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://sheltered-coast-56902.herokuapp.com/addReview', {
             method: 'POST',
             body: formData
         })
@@ -43,7 +43,7 @@ const Review = () => {
         //     description: data.description,
         //     imageURL: imageURL
         // }
-        // const url = `http://localhost:5000/addReview`
+        // const url = `https://sheltered-coast-56902.herokuapp.com/addReview`
         // console.log(reviewData);
         // fetch(url, {
         //     method: 'POST',

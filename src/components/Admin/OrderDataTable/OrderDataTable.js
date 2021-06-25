@@ -12,9 +12,7 @@ const OrderDataTable = ({orderlist}) => {
             <tr>
             <th className="text-secondary text-left" scope="col">Sr No</th>
             <th className="text-secondary" scope="col">Service Name</th>
-            <th className="text-secondary" scope="col">Name</th>
-            <th className="text-secondary" scope="col">Phone</th>
-            <th className="text-secondary" scope="col">Email</th>
+            <th className="text-secondary" scope="col">Description</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +22,7 @@ const OrderDataTable = ({orderlist}) => {
                 <tr>
                     <td>{index + 1}</td>
                     <td>{order.name}</td>
-                    <td>{order.phone}</td>
-                    <td>{order.email}</td>
+                    <td>{order.description}</td>
                 </tr>
                 )
             }

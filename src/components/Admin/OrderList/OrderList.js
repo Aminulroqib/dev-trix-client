@@ -4,7 +4,7 @@ import OrderDataTable from '../OrderDataTable/OrderDataTable'
 const OrderList = () => {
     const [orderlist, setOrderlist] = useState([]);
     useEffect(() => {
-        fetch('')
+        fetch('https://sheltered-coast-56902.herokuapp.com/events')
             .then(res => res.json())
             .then(data => setOrderlist(data))
     }, [])

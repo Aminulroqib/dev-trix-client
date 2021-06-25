@@ -13,7 +13,7 @@ const AddService = () => {
             description: data.description,
             imageURL: imageURL
         }
-        const url = `http://localhost:5000/addEvent`
+        const url = `https://sheltered-coast-56902.herokuapp.com/addEvent`
         console.log(eventData);
         fetch(url, {
             method: 'POST',

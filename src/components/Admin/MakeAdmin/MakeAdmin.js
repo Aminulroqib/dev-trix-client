@@ -12,7 +12,7 @@ const MakeAdmin = () => {
             name: data.name,
             email: data.email
         }
-        const url = `http://localhost:5000/addAdmin`
+        const url = `https://sheltered-coast-56902.herokuapp.com/addAdmin`
         console.log(adminData);
         fetch(url, {
             method: 'POST',

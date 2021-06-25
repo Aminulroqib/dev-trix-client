@@ -6,7 +6,7 @@ const BookingList = () => {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://sheltered-coast-56902.herokuapp.com/events')
         .then(res=>res.json())
         .then(data =>{
             console.log(data);
